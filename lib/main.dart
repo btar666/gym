@@ -32,6 +32,6 @@ class MyApp extends StatelessWidget {
             theme: getThemeData(),
           );
         },
-        designSize: const Size(414, 896));
+        designSize: const Size(413, 896));
   }
 }
