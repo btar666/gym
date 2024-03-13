@@ -3,6 +3,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:gym/core/local/app_color.dart';
 import 'package:gym/view/home/home_sc.dart';
 import 'core/local/theme.dart';
 
@@ -29,7 +30,12 @@ class MyApp extends StatelessWidget {
             home: HomeSc(),
             locale: const Locale('ar'),
             debugShowCheckedModeBanner: false,
-            theme: getThemeData(),
+            theme: ThemeData(
+    fontFamily: 'cairo',
+    scaffoldBackgroundColor:AppColor.backgroundColor,
+    primaryColor: AppColor.primaryColor,
+    cardColor: AppColor.secondColor
+  ),
           );
         },
         designSize: const Size(414, 896));
