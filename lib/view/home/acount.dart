@@ -33,7 +33,7 @@ class Account extends StatelessWidget {
                 ),
               ),
               Text(
-                "الاسم",
+                ":الاسم",
                 style: TextStyle(
                   fontFamily: 'Cairo',
                   fontSize: 20.0,
