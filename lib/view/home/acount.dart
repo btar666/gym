@@ -104,7 +104,8 @@ class Account extends StatelessWidget {
         ),
            SizedBox(height: 30,),
 
-        Row(
+        Row( 
+          
           children: [
             SizedBox(width: 20,),
             Text(
