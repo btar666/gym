@@ -1,8 +1,10 @@
 import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 final emailRegex = RegExp(
     r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'); // تعريف تعبير استدلالي للتحقق من البريد الإلكتروني
+
 TextFormField defaulformfield({
   required TextEditingController controller,
   required TextInputType Type,
@@ -53,3 +55,41 @@ TextFormField defaulformfield({
         border: OutlineInputBorder(),
       ),
     );
+
+Widget defaultButton({
+  double width=340 ,
+  double height=50,
+  Color background = Colors.blueGrey,
+  bool  isUpperCase=true,
+  required Function() function,
+  required String text,
+  double radius=0.0,
+  double fontSixe=23.0,
+  Color textColor= Colors.white,
+  String Font='Cairo',
+})=> Container(
+  width: width,
+
+  child: MaterialButton(
+    onPressed: function ,
+    child: Text(
+      isUpperCase ? text.toUpperCase(): text,
+      style: TextStyle(
+        fontFamily: Font,
+
+        fontSize: fontSixe,
+        fontWeight: FontWeight.w800,
+        color: textColor, // تعيين شفافية النص هنا
+
+       ),
+    ),
+
+  ),
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(15.0),
+    color: background,
+    border: Border.all(color: Colors.white.withOpacity(0.5), width: 1.5), // إضافة خط خارجي بلون أبيض
+
+  ),
+
+);
