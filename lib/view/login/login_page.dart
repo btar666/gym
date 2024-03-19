@@ -69,7 +69,7 @@ class login_page extends StatelessWidget {
 
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    hintText: 'ادخل اسمك',
+                    hintText: 'ادخل .اسمك',
                     hintStyle: TextStyle(
                       fontSize: 20,
                      // fontWeight: FontWeight.w700,
