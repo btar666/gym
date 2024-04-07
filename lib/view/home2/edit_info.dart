@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
+import '../login/login_mod2.dart';
 
 class edit_info_page extends StatelessWidget {
 
@@ -526,7 +527,15 @@ class edit_info_page extends StatelessWidget {
               text: 'تعديل المعلومات',
               background: Color(0xFF1B263B),
             ),
-
+            SizedBox(height: 20,),
+            defaultButton(
+              function: () {
+                Get.to(login_mod2_page());
+              },
+              text: 'تسجيل الخروج',
+              background: Color(0xFF1B263B),
+              width: 300,
+            ),
             SizedBox(
               height: 110,
             ),

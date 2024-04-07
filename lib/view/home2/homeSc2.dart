@@ -85,10 +85,10 @@ class HomeSc2 extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              itemInNavBar("home2", 0, "تعديل المعلومات"),
+              itemInNavBar("edit", 0, "تعديل المعلومات"),
               itemInNavBar("add", 1, "اضافه مشترك"),
               //itemInNavBar("timer", 2, "المؤقت"),
-              itemInNavBar("users", 2, "المشتركين"),
+              itemInNavBar("user", 2, "المشتركين"),
             ],
           ),
           // SizedBox(height: 8.h),
