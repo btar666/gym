@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
+import '../home2/homeSc2.dart';
 import 'RegisterScreen.dart';
 import 'dept_oage.dart';
 
@@ -182,7 +183,7 @@ class login_mod2_page extends StatelessWidget {
           ),
           defaultButton(
             function: () {
-              Get.to(HomeSc());
+              Get.to(HomeSc2());
             },
             text: 'التالي',
             background: Color(0xFF1B263B),

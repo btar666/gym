@@ -7,10 +7,8 @@ import 'package:get/get.dart';
 
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
-import '../home2/homeSc2.dart';
-import 'login_mod2.dart';
 
-class RegisterScreen extends StatelessWidget {
+class edit_info_page extends StatelessWidget {
 
   String? validateTime(String? value) {
     String pattern = r'^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$';
@@ -34,33 +32,33 @@ class RegisterScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 350.h,
-              width: double.infinity,
-              alignment: AlignmentDirectional.topStart,
-              child: Column(
-                children: [
-                  SizedBox(height: 45.h,),
-                  IconButton(
-                      onPressed: (){
-                        Get.offAll(login_mod2_page());
-
-                      },
-                      icon:Icon( Icons.arrow_back)
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                color: Color(0xFFD9D9D9),
-                borderRadius:
-                BorderRadius.only(bottomRight: Radius.circular(150.0)),
-              ),
-            ),
+            // Container(
+            //   height: 350.h,
+            //   width: double.infinity,
+            //   alignment: AlignmentDirectional.topStart,
+            //   child: Column(
+            //     children: [
+            //       SizedBox(height: 45.h,),
+            //       IconButton(
+            //           onPressed: (){
+            //           //  Get.offAll(login_mod2_page());
+            //
+            //           },
+            //           icon:Icon( Icons.arrow_back)
+            //       ),
+            //     ],
+            //   ),
+            //   decoration: BoxDecoration(
+            //     color: Color(0xFFD9D9D9),
+            //     borderRadius:
+            //     BorderRadius.only(bottomRight: Radius.circular(150.0)),
+            //   ),
+            // ),
             SizedBox(
               height: 20.h,
             ),
             Text(
-              "ادخل المعلومات",
+              "تعديل المعلومات",
               style: TextStyle(
                 fontFamily: 'Cairo',
                 fontSize: 30.0,
@@ -256,17 +254,17 @@ class RegisterScreen extends StatelessWidget {
             SizedBox(
               height: 40.h,
             ),
-              Container(
-                color: Colors.grey,
-                width: 300,
-                height: 0.75,
-                alignment: AlignmentDirectional.center,
-              ),
+            Container(
+              color: Colors.grey,
+              width: 300,
+              height: 0.75,
+              alignment: AlignmentDirectional.center,
+            ),
             SizedBox(
               height: 40.h,
             ),
             Text(
-              "معلومات القاعه",
+              "تعديل معلومات القاعه ",
               style: TextStyle(
                 fontFamily: 'Cairo',
                 fontSize: 30.0,
@@ -366,8 +364,8 @@ class RegisterScreen extends StatelessWidget {
                       child: TextFormField(
                         controller: time_opencontroller,
                         keyboardType: TextInputType.datetime,
-                         inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9:]'))],
-                         validator: validateTime,
+                        inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9:]'))],
+                        validator: validateTime,
 
                         style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
@@ -523,14 +521,14 @@ class RegisterScreen extends StatelessWidget {
             ),
             defaultButton(
               function: () {
-                Get.to(HomeSc2());
+                Get.to(HomeSc());
               },
-              text: 'انشاء الحساب',
+              text: 'تعديل المعلومات',
               background: Color(0xFF1B263B),
             ),
 
             SizedBox(
-              height: 20,
+              height: 110,
             ),
           ],
         ),
