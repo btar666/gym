@@ -6,9 +6,10 @@ import 'package:get/get.dart';
 
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
-import 'dept_oage.dart';
+import 'login_mod2.dart';
+import 'login_page.dart';
 
-class login_page extends StatelessWidget {
+class dept_page extends StatelessWidget {
   var namecontroller = TextEditingController();
   var passwardcontroller = TextEditingController();
 
@@ -19,31 +20,17 @@ class login_page extends StatelessWidget {
         children: [
           Container(
             height: 350.h,
-            width: double.infinity,
-            alignment: AlignmentDirectional.topStart,
-            child: Column(
-              children: [
-                SizedBox(height: 45.h,),
-                IconButton(
-                    onPressed: (){
-                      Get.offAll(dept_page());
-
-                    },
-                    icon:Icon( Icons.arrow_back)
-                ),
-              ],
-            ),
             decoration: BoxDecoration(
               color: Color(0xFFD9D9D9),
               borderRadius:
-                  BorderRadius.only(bottomRight: Radius.circular(150.0)),
+              BorderRadius.only(bottomRight: Radius.circular(150.0)),
             ),
           ),
           SizedBox(
             height: 20.h,
           ),
           Text(
-            "تسجيل الدخول",
+            "اختر :",
             style: TextStyle(
               fontFamily: 'Cairo',
               fontSize: 30.0,
@@ -57,44 +44,31 @@ class login_page extends StatelessWidget {
           SizedBox(
             height: 20.h,
           ),
-          Row(
-            children: [
-              SizedBox(
-                width: 30,
-              ),
-              Text(
-                "الاسم",
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w700,
-                  height: 1.5, // line height
-                  letterSpacing: 0.0,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.right,
-              ),
-            ],
-          ),
+          
           SizedBox(
-            height: 10.h,
+            height: 100.h,
           ),
           Row(
             children: [
               SizedBox(
-                width: 30.w,
+                width: 40.w,
               ),
               Container(
-                width: 355.w,
+                width: 150.w,
+                height: 80.h,
                 child: TextFormField(
+                  readOnly: true,
+                  onTap: (){
+                    Get.to(login_page());
+                  },
                   controller: namecontroller,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    hintText: 'ادخل   اسمك',
+                    hintText: '  لاعب',
                     hintStyle: TextStyle(
-                      fontSize: 20,
+                      fontSize:40,
                       // fontWeight: FontWeight.w700,
-                      color: Colors.blueGrey,
+                      color: Colors.white,
                     ),
                     filled: true,
                     fillColor: Color(0xFF415A77),
@@ -111,49 +85,27 @@ class login_page extends StatelessWidget {
                   ),
                 ),
               ),
-            ],
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 30,
-              ),
-              Text(
-                "كلمة المرور",
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w700,
-                  height: 1.5, // line height
-                  letterSpacing: 0.0,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.right,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Row(
-            children: [
               SizedBox(
                 width: 30.w,
               ),
               Container(
-                width: 355.w,
+                width: 150.w,
+                height: 80.h,
                 child: TextFormField(
-                  controller: passwardcontroller,
+                  readOnly: true,
+                  onTap: (){
+                    Get.to(login_mod2_page());
+
+
+                  },
+                  controller: namecontroller,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    hintText: 'ادخل كلمة المرور',
+                    hintText: '  مدرب',
                     hintStyle: TextStyle(
-                      fontSize: 20,
+                      fontSize: 40,
                       // fontWeight: FontWeight.w700,
-                      color: Colors.blueGrey,
+                      color: Colors.white,
                     ),
                     filled: true,
                     fillColor: Color(0xFF415A77),
@@ -172,16 +124,7 @@ class login_page extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 55,
-          ),
-          defaultButton(
-            function: () {
-              Get.to(HomeSc());
-            },
-            text: 'التالي',
-            background: Color(0xFF1B263B),
-          ),
+
         ],
       ),
     );

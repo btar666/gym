@@ -6,9 +6,10 @@ import 'package:get/get.dart';
 
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
+import 'RegisterScreen.dart';
 import 'dept_oage.dart';
 
-class login_page extends StatelessWidget {
+class login_mod2_page extends StatelessWidget {
   var namecontroller = TextEditingController();
   var passwardcontroller = TextEditingController();
 
@@ -23,7 +24,7 @@ class login_page extends StatelessWidget {
             alignment: AlignmentDirectional.topStart,
             child: Column(
               children: [
-                SizedBox(height: 45.h,),
+                SizedBox(height: 40.h,),
                 IconButton(
                     onPressed: (){
                       Get.offAll(dept_page());
@@ -36,14 +37,14 @@ class login_page extends StatelessWidget {
             decoration: BoxDecoration(
               color: Color(0xFFD9D9D9),
               borderRadius:
-                  BorderRadius.only(bottomRight: Radius.circular(150.0)),
+              BorderRadius.only(bottomRight: Radius.circular(150.0)),
             ),
           ),
           SizedBox(
             height: 20.h,
           ),
           Text(
-            "تسجيل الدخول",
+            "تسجيل دخول المدرب",
             style: TextStyle(
               fontFamily: 'Cairo',
               fontSize: 30.0,
@@ -173,6 +174,10 @@ class login_page extends StatelessWidget {
             ],
           ),
           SizedBox(
+            height: 10.h,
+          ),
+
+          SizedBox(
             height: 55,
           ),
           defaultButton(
@@ -181,6 +186,33 @@ class login_page extends StatelessWidget {
             },
             text: 'التالي',
             background: Color(0xFF1B263B),
+          ),
+
+          SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            width: 100,
+          ),
+
+          TextButton(
+            onPressed: (){
+              Get.to(RegisterScreen());
+
+
+            },
+            child:  Text(
+              "انشاء حساب",
+              style: TextStyle(
+                fontFamily: 'Cairo',
+                fontSize: 20.0,
+                fontWeight: FontWeight.w700,
+                height: 1.5, // line height
+                letterSpacing: 0.0,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.right,
+            ),
           ),
         ],
       ),

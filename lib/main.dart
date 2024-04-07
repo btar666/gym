@@ -5,6 +5,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:gym/core/local/app_color.dart';
 import 'package:gym/view/home/home_sc.dart';
+import 'package:gym/view/login/dept_oage.dart';
 import 'package:gym/view/login/login_page.dart';
 import 'core/local/theme.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
                 child: child!,
               );
             },
-            home: login_page(),
+            home: dept_page(),
             locale: const Locale('ar'),
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
