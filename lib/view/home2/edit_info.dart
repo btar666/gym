@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../sheard/cachHelper.dart';
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
 import '../login/login_mod2.dart';
@@ -530,6 +531,8 @@ class edit_info_page extends StatelessWidget {
             SizedBox(height: 20,),
             defaultButton(
               function: () {
+                CacheHelper.removeData2();
+
                 Get.to(login_mod2_page());
               },
               text: 'تسجيل الخروج',

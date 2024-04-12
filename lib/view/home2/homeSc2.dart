@@ -10,11 +10,13 @@ import 'package:gym/view/home/save_page.dart';
 import 'package:gym/view/home2/users.dart';
 
 import '../../controller/home_controller.dart';
+import '../../controller/login_controller.dart';
 import 'add_users.dart';
 import 'edit_info.dart';
 
 class HomeSc2 extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
+  login_Controller Login_Controller=Get.put(login_Controller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,7 @@ class HomeSc2 extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               children: [
                 const SizedBox(width: double.infinity),
-                [edit_info_page(), const usersview(), const Adduser()][homeController.index],
+                [edit_info_page(),   Adduser(),const usersview()][homeController.index],
                 _navBar()
               ],
             )),

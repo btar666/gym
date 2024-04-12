@@ -1,17 +1,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 
+import '../../controller/login_controller.dart';
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
 
 class Adduser extends StatelessWidget {
+
   const Adduser({super.key});
+ // login_Controller Login_Controller=Get.put(login_Controller());
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return GetBuilder<login_Controller>(
+        init: login_Controller(),
+    builder: (controller) => SingleChildScrollView(
 
       child: Column(
         children: [
@@ -50,12 +57,12 @@ class Adduser extends StatelessWidget {
               children: [
 
                 Center(
-                 child: Text(
-                   "اضافة مشترك",
-                   style: TextStyle(
-                       fontWeight: FontWeight.w800, fontSize: 30, color: Colors.white),
-                 ),
-                    ),
+                  child: Text(
+                    "اضافة مشترك",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w800, fontSize: 30, color: Colors.white),
+                  ),
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -67,6 +74,7 @@ class Adduser extends StatelessWidget {
                 TextField(
                   style: TextStyle(color: Colors.white, fontSize: 18),
                   textDirection: TextDirection.rtl,
+                  controller: controller.namecontroller ,
                   decoration: InputDecoration(
                       hintText: "ادخل اسم المشترك",
                       hintTextDirection: TextDirection.rtl,
@@ -85,13 +93,14 @@ class Adduser extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  "اسم المشترك",
+                  "كود المشترك",
                   style: TextStyle(
                       fontWeight: FontWeight.w800, fontSize: 18, color: Colors.white),
                 ),
                 TextField(
                   style: TextStyle(color: Colors.white, fontSize: 18),
                   textDirection: TextDirection.rtl,
+                  controller: controller.codecontroller,
                   decoration: InputDecoration(
                       hintText: "ادخل كود المشترك",
                       hintTextDirection: TextDirection.rtl,
@@ -106,15 +115,40 @@ class Adduser extends StatelessWidget {
                           borderSide: BorderSide(width: 0, color: Colors.transparent),
                           borderRadius: BorderRadius.circular(30))),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
 
+                Text(
+                  "وصف الاشتراك",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800, fontSize: 18, color: Colors.white),
+                ),
+                TextField(
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  textDirection: TextDirection.rtl,
+                  controller: controller.discribcontroller,
+                  decoration: InputDecoration(
+                      hintText: "ادخل وصف المشترك",
+                      hintTextDirection: TextDirection.rtl,
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
+                      contentPadding: EdgeInsets.all(15),
+                      fillColor: Color(0xff415A77),
+                      filled: true,
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 0, color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(30)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 0, color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(30))),
+                ),
                 SizedBox(height: 80,),
-
                 Row(
                   children: [
                     SizedBox(width: 7,),
                     defaultButton(
                       function: () {
-                       // Get.to(HomeSc());
+                        controller.adduser();
                       },
                       text: 'اضافه مشترك',
                       background: Color(0xFF1B263B),
@@ -129,6 +163,8 @@ class Adduser extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
+
   }
 }

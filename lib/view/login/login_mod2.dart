@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../controller/login_controller.dart';
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
 import '../home2/homeSc2.dart';
@@ -11,12 +12,14 @@ import 'RegisterScreen.dart';
 import 'dept_oage.dart';
 
 class login_mod2_page extends StatelessWidget {
-  var namecontroller = TextEditingController();
-  var passwardcontroller = TextEditingController();
+
+  login_Controller Login_Controller=Get.put(login_Controller());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder<login_Controller>(
+        init: login_Controller(),
+    builder: (controller) =>Scaffold(
       body: Column(
         children: [
           Container(
@@ -89,7 +92,7 @@ class login_mod2_page extends StatelessWidget {
               Container(
                 width: 355.w,
                 child: TextFormField(
-                  controller: namecontroller,
+                  controller: controller.emailcontroller,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: 'ادخل   اسمك',
@@ -148,7 +151,7 @@ class login_mod2_page extends StatelessWidget {
               Container(
                 width: 355.w,
                 child: TextFormField(
-                  controller: passwardcontroller,
+                  controller: controller.passwardcontroller,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: 'ادخل كلمة المرور',
@@ -183,7 +186,8 @@ class login_mod2_page extends StatelessWidget {
           ),
           defaultButton(
             function: () {
-              Get.to(HomeSc2());
+
+             controller.loginAccount();
             },
             text: 'التالي',
             background: Color(0xFF1B263B),
@@ -217,6 +221,10 @@ class login_mod2_page extends StatelessWidget {
           ),
         ],
       ),
+    ),
+
     );
+
+
   }
 }
