@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../controller/login_controller.dart';
+import '../../sheard/cachHelper_player.dart';
 import '../../sheard/components.dart';
 import '../login/login_page.dart';
 
@@ -248,6 +249,8 @@ class Account extends StatelessWidget {
           SizedBox(height: 20,),
           defaultButton(
             function: () {
+              CacheHelper_player.removeData2();
+
               Get.to(login_page());
             },
             text: 'تسجيل الخروج',

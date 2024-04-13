@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+
+import '../../controller/login_controller.dart';
 
 class usersview extends StatelessWidget {
   const usersview({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return  GetBuilder<login_Controller>(
+        init: login_Controller(),
+    builder: (controller) =>SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -26,7 +31,11 @@ class usersview extends StatelessWidget {
               ))
         ],
       ),
+    ),
+
     );
+
+
   }
 }
 
@@ -78,9 +87,9 @@ class UserItem extends StatelessWidget {
                               TextSpan(
                                   text: "30 الف شهريا" + "\n",
                                   style: TextStyle(color: Colors.white)),
-                              TextSpan(text: "الوقت المتبقي : "),
+                              TextSpan(text: "الكود : "),
                               TextSpan(
-                                  text: "20بوم",
+                                  text: "eee",
                                   style: TextStyle(color: Colors.white))
                             ])),
                   ),
@@ -120,7 +129,7 @@ class UserItem extends StatelessWidget {
                         color: Colors.white),
                     child: Center(
                       child: Text(
-                        "حذف",
+                        "تعديل",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
