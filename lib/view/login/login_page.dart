@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../controller/login_controller.dart';
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
 import 'dept_oage.dart';
 
 class login_page extends StatelessWidget {
-  var namecontroller = TextEditingController();
-  var passwardcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  GetBuilder<login_Controller>(
+        init: login_Controller(),
+    builder: (controller) =>Scaffold(
       body: Column(
         children: [
           Container(
@@ -36,7 +37,7 @@ class login_page extends StatelessWidget {
             decoration: BoxDecoration(
               color: Color(0xFFD9D9D9),
               borderRadius:
-                  BorderRadius.only(bottomRight: Radius.circular(150.0)),
+              BorderRadius.only(bottomRight: Radius.circular(150.0)),
             ),
           ),
           SizedBox(
@@ -87,7 +88,7 @@ class login_page extends StatelessWidget {
               Container(
                 width: 355.w,
                 child: TextFormField(
-                  controller: namecontroller,
+                  controller: controller.namecontroller,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: 'ادخل   اسمك',
@@ -122,7 +123,7 @@ class login_page extends StatelessWidget {
                 width: 30,
               ),
               Text(
-                "كلمة المرور",
+                "الكود",
                 style: TextStyle(
                   fontFamily: 'Cairo',
                   fontSize: 20.0,
@@ -146,10 +147,10 @@ class login_page extends StatelessWidget {
               Container(
                 width: 355.w,
                 child: TextFormField(
-                  controller: passwardcontroller,
+                  controller: controller.codecontroller,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    hintText: 'ادخل كلمة المرور',
+                    hintText: 'ادخل الكود',
                     hintStyle: TextStyle(
                       fontSize: 20,
                       // fontWeight: FontWeight.w700,
@@ -177,13 +178,16 @@ class login_page extends StatelessWidget {
           ),
           defaultButton(
             function: () {
-              Get.to(HomeSc());
+             controller.loginPlayer();
             },
             text: 'التالي',
             background: Color(0xFF1B263B),
           ),
         ],
       ),
+    ),
     );
+
+
   }
 }

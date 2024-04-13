@@ -3,21 +3,20 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:gym/sheard/player.dart';
 import 'package:http/http.dart' as http;
 import '../sheard/cachHelper.dart';
 import '../sheard/cachHelper_player.dart';
 import '../sheard/post.dart';
+import '../view/home/home_sc.dart';
 import '../view/home2/homeSc2.dart';
 
 class login_Controller extends GetxController{
 List<post> allPost=[];
+player? player_model;
   @override
   void onInit() {
-
-
     super.onInit();
-   // pri();
-    //fechpost();
 
   }
 var namecontroller = TextEditingController();
@@ -130,7 +129,7 @@ Future<post> loginAccount(
   );
   print(response.statusCode .toString());
   print("1111111111111111111111");
-  update();
+  // update();
   if (response.statusCode == 200) {
     print("333333333333333333333333---");
     final responseData = json.decode(utf8.decode(response.bodyBytes));
@@ -190,6 +189,52 @@ Future<post> loginAccount(
       print(postId);
 
       Get.to(HomeSc2());
+      update();
+      return post.fromjson(json.decode(response.body));
+
+    } else {
+      print("4444444444444444444444");
+      update();
+      throw Exception('Failed to load posts');
+    }
+
+  }
+//------------------------------------------------login player
+  Future<post> loginPlayer(
+
+      )async{
+
+     print("000000000000000000000000");
+     print(codecontroller.text);
+    final uri=Uri.parse("http://62.72.16.189:90/btar/btar/userinfo_by_code?user_code=${codecontroller.text}");
+    final response = await http.get(
+      uri,
+      headers: {
+        'accept': 'application/json',
+       },
+
+    );
+    print(response.statusCode .toString());
+    print("1111111111111111111111");
+    // update();
+    if (response.statusCode == 200) {
+      print("333333333333333333333333---");
+      final responseData = json.decode(utf8.decode(response.bodyBytes));
+      print(responseData);
+      final player_id = responseData['_id'].toString();
+      CacheHelper_player.saveData(key: "Id", value: player_id);
+
+       player_model=player(
+          id: responseData['_id'].toString(),
+          name: responseData['name'].toString(),
+          code: responseData['code'].toString(),
+          description: responseData['subscription_date'].toString(),
+          id_coach: responseData['coach_id'].toString(),
+          name_gym: responseData['gym_name'].toString(),
+          name_coach: responseData['coach_name'].toString()
+      );
+
+      Get.to(HomeSc());
       update();
       return post.fromjson(json.decode(response.body));
 

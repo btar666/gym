@@ -22,11 +22,13 @@ Future<void> main() async {
 
   Widget widget;
 
-  var uId = CacheHelper.getData(key: 'uId');
-
+  var uId = CacheHelper.getData(key: 'Id');
+  var uId2 = CacheHelper_player.getData(key: 'Id');
   if (uId != null) {
     widget = HomeSc2();
-  } else {
+  }else if(uId2!=null){
+    widget = HomeSc();
+} else{
     widget = dept_page();
   }
   SystemChrome.setPreferredOrientations([
