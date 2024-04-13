@@ -4,15 +4,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:gym/view/home2/users.dart';
 
+import '../../controller/home_controller.dart';
 import '../../controller/login_controller.dart';
 import '../../sheard/components.dart';
 import '../home/home_sc.dart';
 
 class Adduser extends StatelessWidget {
 
-  const Adduser({super.key});
- // login_Controller Login_Controller=Get.put(login_Controller());
+ // const Adduser({super.key});
+  HomeController HomeController1=Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -147,8 +149,10 @@ class Adduser extends StatelessWidget {
                   children: [
                     SizedBox(width: 7,),
                     defaultButton(
-                      function: () {
-                        controller.adduser();
+                      function: () async {
+                       await controller.adduser();
+                        controller.onInit();
+                        HomeController1.index=0;
                       },
                       text: 'اضافه مشترك',
                       background: Color(0xFF1B263B),

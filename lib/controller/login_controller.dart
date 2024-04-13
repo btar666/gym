@@ -12,12 +12,14 @@ import '../view/home/home_sc.dart';
 import '../view/home2/homeSc2.dart';
 
 class login_Controller extends GetxController{
-List<post> allPost=[];
+
+
 player? player_model;
+
   @override
   void onInit() {
     super.onInit();
-
+   getusers();
   }
 var namecontroller = TextEditingController();
 var emailcontroller = TextEditingController();
@@ -30,38 +32,7 @@ var codecontroller = TextEditingController();
 
 
 
-  //
-  Future<void> fechpost()async{
-    print("00000000000000000000");
-    try {
-      final uri = Uri.parse("http://62.72.16.189:90/btar/docs");
-      final response = await http.get(uri);
-      print("1111111111111111111");
 
-      if (response.statusCode == 200) {
-        // return post.fromjson(json.decode(response.body));
-        print("2222222222222222222");
-        print(response.body.toString());
-        var res = jsonDecode(response.body);
-
-
-        print(res);
-        for (int i = 0; i < res.length; i++) {
-          allPost.add(post.fromjson(res));
-        }
-        print("333333333333");
-      } else {
-        print("44444444444444");
-        // throw Exception('Failed to load posts');
-
-      }
-    }catch(e){
-      print("5555555555555");
-      print(e.toString());
-    }
-    update();
-    print("last");
-  }
   //--------------------------------------------creatAccount
   Future<post> creatAccount(
 
@@ -168,8 +139,7 @@ Future<post> loginAccount(
     var coach_id=CacheHelper.getData(key: 'Id');
     print(coach_id);
     final uri=Uri.parse("http://62.72.16.189:90/btar/btar/addUser?coach_id=${coach_id}");
-    //print("http://62.72.16.189:90/btar/btar/addUser?coach_id=${coach_id}");
-    final response = await http.post(
+     final response = await http.post(
       uri,
       headers: {
         'accept': 'application/json',
@@ -181,14 +151,13 @@ Future<post> loginAccount(
     print("1111111111111111111111");
     update();
     if (response.statusCode == 200) {
-      print("333333333333333333333333---");
-      final responseData = json.decode(utf8.decode(response.bodyBytes));
-      print(responseData);
-      final postId = responseData['id'].toString();
-      CacheHelper_player.saveData(key: "Id", value: postId);
-      print(postId);
+      // print("333333333333333333333333---");
+      // final responseData = json.decode(utf8.decode(response.bodyBytes));
+      // print(responseData);
+      // final postId = responseData['id'].toString();
+      // CacheHelper_player.saveData(key: "Id", value: postId);
+      // print(postId);
 
-      Get.to(HomeSc2());
       update();
       return post.fromjson(json.decode(response.body));
 
@@ -200,7 +169,92 @@ Future<post> loginAccount(
 
   }
 //  -------------------------------------------get user
-  
+  List<player> users=[];
+  // Future<player> getusers(
+  //
+  //     )async{
+  //
+  //   print("000000000000 get user 000000000000");
+  //   var coach_id=CacheHelper.getData(key: 'Id');
+  //   final uri=Uri.parse("http://62.72.16.189:90/btar/btar/alluser?coach_id=${coach_id}");
+  //   final response = await http.get(
+  //     uri,
+  //     headers: {
+  //       'accept': 'application/json',
+  //     },
+  //
+  //   );
+  //   print(response.statusCode .toString());
+  //   print("1111111111111111111111");
+  //   // update();
+  //   if (response.statusCode == 200) {
+  //     print("333333333333333333333333---");
+  //     final responseDataList  = json.decode(utf8.decode(response.bodyBytes));
+  //     print(responseDataList );
+  //
+  //     for (var responseData in responseDataList) {
+  //       player newPlayer = player(
+  //           id: responseData['_id'].toString(),
+  //           name: responseData['name'].toString(),
+  //           code: responseData['code'].toString(),
+  //           description: responseData['subscription_date'].toString(),
+  //           id_coach: responseData['coach_id'].toString(),
+  //           name_gym: responseData['gym_name'].toString(),
+  //           name_coach: responseData['coach_name'].toString()
+  //       );
+  //
+  //       users.add(newPlayer);
+  //     }
+  //
+  //     update();
+  //     return player.fromjson(json.decode(response.body));
+  //
+  //   } else {
+  //     print("4444444444444444444444");
+  //     update();
+  //     throw Exception('Failed to load posts');
+  //   }
+  //  }
+  Future<void> getusers() async {
+    print("000000000000 get user 000000000000");
+    var coach_id = CacheHelper.getData(key: 'Id');
+    print("coach id:"+coach_id);
+    final uri = Uri.parse("http://62.72.16.189:90/btar/btar/alluser?coach_id=${coach_id}");
+    final response = await http.get(
+      uri,
+      headers: {'accept': 'application/json'},
+    );
+    print(response.statusCode.toString());
+    print("1111111111111111111111");
+
+    if (response.statusCode == 200) {
+      print("333333333333333333333333---");
+      final responseDataList = json.decode(utf8.decode(response.bodyBytes));
+      print(responseDataList);
+
+      for (var responseData in responseDataList) {
+        player newPlayer = player(
+            id: responseData['_id'].toString(),
+            name: responseData['name'].toString(),
+            code: responseData['code'].toString(),
+            description: responseData['subscription_date'].toString(),
+            id_coach: responseData['coach_id'].toString(),
+            name_gym: responseData['gym_name'].toString(),
+            name_coach: responseData['coach_name'].toString()
+        );
+
+        users.add(newPlayer);
+      }
+
+      update();
+    } else {
+      print("4444444444444444444444");
+      update();
+      throw Exception('Failed to load posts');
+    }
+
+    return; // Add this return statement at the end
+  }
 
 //------------------------------------------------login player
   Future<post> loginPlayer(

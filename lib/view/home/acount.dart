@@ -251,7 +251,7 @@ class Account extends StatelessWidget {
             function: () {
               CacheHelper_player.removeData2();
 
-              Get.to(login_page());
+              Get.offAll(login_page());
             },
             text: 'تسجيل الخروج',
             background: Color(0xFF1B263B),

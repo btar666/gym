@@ -533,7 +533,7 @@ class edit_info_page extends StatelessWidget {
               function: () {
                 CacheHelper.removeData2();
 
-                Get.to(login_mod2_page());
+                Get.offAll(login_mod2_page());
               },
               text: 'تسجيل الخروج',
               background: Color(0xFF1B263B),

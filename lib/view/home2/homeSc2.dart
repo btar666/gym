@@ -26,7 +26,7 @@ class HomeSc2 extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               children: [
                 const SizedBox(width: double.infinity),
-                [edit_info_page(),   Adduser(),const usersview()][homeController.index],
+                [edit_info_page(),   Adduser(),usersview()][homeController.index],
                 _navBar()
               ],
             )),
@@ -47,6 +47,8 @@ class HomeSc2 extends StatelessWidget {
                 homeController.index = index;
                 homeController.update();
                 homeController.selectedId = -1;
+
+
               },
               child: Column(
                 children: [
